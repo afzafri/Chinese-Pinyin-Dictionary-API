@@ -14,7 +14,12 @@ if(isset($_GET['define']))
     $err = curl_error($ch);
     curl_close($ch);  # close curl
     
-    print_r($result); # test print scraped page
+    # use regex to parse the page data.
+    $patern = '#<ul id="search_results">([\w\W]*?)</ul>#';
+    preg_match_all($patern, $result, $parsed);  
+    
+    print_r($parsed[0]);
+    
 }
 else
 {
