@@ -16,5 +16,9 @@ if(isset($_GET['define']))
     
     print_r($result); # test print scraped page
 }
+else
+{
+    echo "Usage: http://site.com/api.php?define=TEXT , where 'TEXT' is your text to search (English, Pinyin or Chinese characters)";
+}
 
 ?>
