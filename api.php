@@ -26,6 +26,8 @@ if(isset($_GET['define']))
     
     for($i=0;$i<count($parsed[0]);$i++)
     {
+        
+        # --------- PARSE TO GET CHINESE CHARACTERS ----------
         $paternword = '#<span class="word">([\w\W]*?)</span>#';
         preg_match_all($paternword, $parsed[0][$i], $word);
         
@@ -39,7 +41,16 @@ if(isset($_GET['define']))
             $combword .= strip_tags($cnword[0][$j]);
         }
         
-        $jsondict[]['cn_char'] = $combword;
+        $jsondict[$i]['cn_char'] = $combword;
+        
+        
+        # --------- PARSE TO GET PINYIN ----------
+        
+        $paternpinyin = '#<span class="pinyin">([\w\W]*?)</span>#';
+        preg_match_all($paternpinyin, $parsed[0][$i], $pinyin);
+        
+        $jsondict[$i]['pinyin'] = strip_tags(implode('',$pinyin[0]));
+        
     }
     
     # encode to json
