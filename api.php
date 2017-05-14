@@ -26,7 +26,7 @@ if(isset($_GET['define']))
 }
 else
 {
-    echo "Usage: http://site.com/api.php?define=TEXT , where 'TEXT' is your text to search (English, Pinyin or Chinese characters)";
+    echo "Usage: http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']."?define=TEXT , where 'TEXT' is your text to search (English, Pinyin or Chinese characters)";
 }
 
 ?>
