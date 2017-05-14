@@ -18,6 +18,9 @@ if(isset($_GET['define']))
     $patern = '#<ul id="search_results">([\w\W]*?)</ul>#';
     preg_match_all($patern, $result, $parsed);  
     
+    $patern2 = '#<li>([\w\W]*?)</li>#';
+    preg_match_all($patern2, implode('',$parsed[0]), $parsed);
+    
     print_r($parsed[0]);
     
 }
