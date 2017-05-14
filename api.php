@@ -18,10 +18,32 @@ if(isset($_GET['define']))
     $patern = '#<ul id="search_results">([\w\W]*?)</ul>#';
     preg_match_all($patern, $result, $parsed);  
     
+    # parse to get only the result section
     $patern2 = '#<li>([\w\W]*?)</li>#';
     preg_match_all($patern2, implode('',$parsed[0]), $parsed);
     
-    print_r($parsed[0]);
+    $jsondict = array();
+    
+    for($i=0;$i<count($parsed[0]);$i++)
+    {
+        $paternword = '#<span class="word">([\w\W]*?)</span>#';
+        preg_match_all($paternword, $parsed[0][$i], $word);
+        
+        $paternword2 = '#<a([\w\W]*?)</a>#';
+        preg_match_all($paternword2, implode('',$word[0]), $cnword);
+        
+        $combword = '';
+        
+        for($j=0;$j<count($cnword[0]);$j++)
+        {
+            $combword .= strip_tags($cnword[0][$j]);
+        }
+        
+        $jsondict[]['cn_char'] = $combword;
+    }
+    
+    # encode to json
+    echo json_encode($jsondict);
     
 }
 else
