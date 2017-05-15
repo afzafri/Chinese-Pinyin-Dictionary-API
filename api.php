@@ -8,6 +8,8 @@
     Usage: http://site.com/api.php?define=TEXT , where 'TEXT' is your text to search (English, Pinyin or Chinese characters)
 */
 
+header("Access-Control-Allow-Origin: *"); # enable CORS
+
 if(isset($_GET['define']))
 {
 	$define = $_GET['define']; 
