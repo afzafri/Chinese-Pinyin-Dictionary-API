@@ -59,7 +59,7 @@ if(isset($_GET['define']))
         
         for($j=0;$j<count($meanings[0]);$j++)
         {
-            $jsondict[$i]['meanings'] = strip_tags($meanings[0][$j]);
+            $jsondict[$i]['meanings'] = preg_split("/\\r\\n|\\r|\\n/", strip_tags($meanings[0][$j]));
         }
         
         
