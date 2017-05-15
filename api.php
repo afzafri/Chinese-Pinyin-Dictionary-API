@@ -49,7 +49,7 @@ if(isset($_GET['define']))
             $combword .= strip_tags($cnword[0][$j]);
         }
         
-        $jsondict[$i]['cn_char'] = $combword;
+        $jsondict['data'][$i]['cn_char'] = $combword;
         
         
         # --------- PARSE TO GET PINYIN ----------
@@ -57,7 +57,7 @@ if(isset($_GET['define']))
         $paternpinyin = '#<span class="pinyin">([\w\W]*?)</span>#';
         preg_match_all($paternpinyin, $parsed[0][$i], $pinyin);
         
-        $jsondict[$i]['pinyin'] = strip_tags(implode('',$pinyin[0]));
+        $jsondict['data'][$i]['pinyin'] = strip_tags(implode('',$pinyin[0]));
         
         
         # --------- PARSE TO GET MEANINGS ----------
@@ -67,10 +67,15 @@ if(isset($_GET['define']))
         
         for($j=0;$j<count($meanings[0]);$j++)
         {
-            $jsondict[$i]['meanings'] = preg_split("/\\r\\n|\\r|\\n/", strip_tags($meanings[0][$j]));
+            $jsondict['data'][$i]['meanings'] = preg_split("/\\r\\n|\\r|\\n/", strip_tags($meanings[0][$j]));
         }
         
     }
+    
+    # project info
+    $jsondict['info']['creator'] = "Afif Zafri (afzafri)";
+    $jsondict['info']['project_page'] = "https://github.com/afzafri/Chinese-Pinyin-Dictionary-API";
+    $jsondict['info']['date_updated'] = "15/05/2017";
     
     # encode to json
     echo json_encode($jsondict);
