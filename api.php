@@ -51,6 +51,20 @@ if(isset($_GET['define']))
         
         $jsondict[$i]['pinyin'] = strip_tags(implode('',$pinyin[0]));
         
+        
+        # --------- PARSE TO GET MEANINGS ----------
+        
+        $paternmeaning = '#<div class="meaning">([\w\W]*?)</div>#';
+        preg_match_all($paternmeaning, $parsed[0][$i], $meanings);
+        
+        for($j=0;$j<count($meanings[0]);$j++)
+        {
+            $jsondict[$i]['meanings'] = strip_tags($meanings[0][$j]);
+        }
+        
+        
+        
+        
     }
     
     # encode to json
