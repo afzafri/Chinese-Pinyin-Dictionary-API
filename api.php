@@ -62,9 +62,6 @@ if(isset($_GET['define']))
             $jsondict[$i]['meanings'] = preg_split("/\\r\\n|\\r|\\n/", strip_tags($meanings[0][$j]));
         }
         
-        
-        
-        
     }
     
     # encode to json
