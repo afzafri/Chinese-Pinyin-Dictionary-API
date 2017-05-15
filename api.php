@@ -32,6 +32,8 @@ if(isset($_GET['define']))
     
     $jsondict = array();
     
+    $jsondict['http_code'] = $httpstatus; # set http response code into the array
+    
     for($i=0;$i<count($parsed[0]);$i++)
     {
         
