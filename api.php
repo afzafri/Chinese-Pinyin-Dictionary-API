@@ -1,5 +1,13 @@
 <?php
 
+/*  
+    (Unofficial) Chinese English Pinyin Dictionary PHP API created by Afif Zafri.
+    Data are scraped from Yabla website (https://chinese.yabla.com/chinese-english-pinyin-dictionary.php),
+    parse the content, and return JSON formatted string.
+    Please note that this is not the official API, this is actually just a "hack"
+    Usage: http://site.com/api.php?define=TEXT , where 'TEXT' is your text to search (English, Pinyin or Chinese characters)
+*/
+
 if(isset($_GET['define']))
 {
 	$define = $_GET['define']; 
