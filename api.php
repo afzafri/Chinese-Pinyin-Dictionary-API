@@ -12,8 +12,9 @@ header("Access-Control-Allow-Origin: *"); # enable CORS
 
 if(isset($_GET['define']))
 {
-	$define = $_GET['define']; 
-    $url = "https://chinese.yabla.com/chinese-english-pinyin-dictionary.php?define=".$define; # yabla website url
+	$define = $_GET['define']; // text to search
+	$showall = (isset($_GET['showall'])) ? "&limit=1000" : ""; // if set, fetch all result
+    $url = "https://chinese.yabla.com/chinese-english-pinyin-dictionary.php?define=".$define.$showall; # yabla website url
    
     $ch = curl_init(); # initialize curl object
     curl_setopt($ch, CURLOPT_URL, $url); # set url
