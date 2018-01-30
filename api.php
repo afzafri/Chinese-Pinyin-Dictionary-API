@@ -36,6 +36,7 @@ if(isset($_GET['define']))
     $jsondict = array();
     
     $jsondict['http_code'] = $httpstatus; # set http response code into the array
+    $jsondict['error_msg'] = $err;
     
     # check if search result found or not
     if(strpos($parsed[0][0], 'No matches found for') !== false) 
@@ -91,7 +92,7 @@ if(isset($_GET['define']))
     # project info
     $jsondict['info']['creator'] = "Afif Zafri (afzafri)";
     $jsondict['info']['project_page'] = "https://github.com/afzafri/Chinese-Pinyin-Dictionary-API";
-    $jsondict['info']['date_updated'] = "15/05/2017";
+    $jsondict['info']['date_updated'] = "30/01/2018";
     
     # encode to json
     echo json_encode($jsondict);
