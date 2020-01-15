@@ -83,13 +83,19 @@ if(isset($_GET['define']))
 
 						$jsondict['data'][$i]['traditional_char'] = $combwordTrad;
 
+						# --------- PARSE TO GET AUDIO MP3 ----------
+
+						$paternaudio = '#data-audio_url="([\w\W]*?)"#';
+		        preg_match_all($paternaudio, implode('',$word[0]), $audio);
+
+						$jsondict['data'][$i]['audio'] = strip_tags($audio[1][0]);
+
             # --------- PARSE TO GET PINYIN ----------
 
             $paternpinyin = '#<span class="pinyin">([\w\W]*?)</span>#';
             preg_match_all($paternpinyin, $parsed[0][$i], $pinyin);
 
             $jsondict['data'][$i]['pinyin'] = strip_tags(implode('',$pinyin[0]));
-
 
             # --------- PARSE TO GET MEANINGS ----------
 
