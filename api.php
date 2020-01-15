@@ -6,6 +6,8 @@
     parse the content, and return JSON formatted string.
     Please note that this is not the official API, this is actually just a "hack"
     Usage: http://site.com/api.php?define=TEXT , where 'TEXT' is your text to search (English, Pinyin or Chinese characters)
+		By default, the API will fetch the first 50 records. To fetch all records, append '&records=NUMBER' to the endpoint , where 'NUMBER' is your number of records to display.
+		Ex: http://site.com/api.php?define=TEXT&records=100
 */
 
 header("Access-Control-Allow-Origin: *"); # enable CORS
