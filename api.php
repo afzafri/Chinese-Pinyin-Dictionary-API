@@ -121,8 +121,11 @@ if(isset($_GET['define']))
 }
 else
 {
-    echo "Usage: http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']."?define=TEXT , where 'TEXT' is your text to search (English, Pinyin or Chinese characters)";
-		echo "By default, the API will fetch the first 50 records. To fetch all records, append '&records=NUMBER' to the endpoint , where 'NUMBER' is your number of records to display <br> Ex: http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']."?define=TEXT&records=100";
+		echo "
+		<ul>
+			<li>Usage: http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']."?define=TEXT , where 'TEXT' is your text to search (English, Pinyin or Chinese characters)</li>
+			<li>By default, the API will fetch the first 50 records. To fetch all records, append '&records=NUMBER' to the endpoint , where 'NUMBER' is your number of records to display <br> Ex: http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']."?define=TEXT&records=100</li>
+		</ul>";
 }
 
 ?>
